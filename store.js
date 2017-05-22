@@ -1,19 +1,17 @@
 //-----------------------------------------------------------------------------//
 
-// store.js - script for storing and editing JSON in a local array
-
-//-----------------------------------------------------------------------------//
-//blank array for storing JSON objects
-
-var chArr= [];
+// store.js - script for storing and editing JSON in local storage
 
 //-----------------------------------------------------------------------------//
 //These watch for button clicks to change the form
 
 $('#add-data').on('click', getData);
 
+var count = localStorage.count;
+generateTable();
+
 //-----------------------------------------------------------------------------//
-//function gets new data and pushes to the array
+//function gets new data and pushes to localStorage
 
 function getData(){
 	var chName = $('#data-name').val();
@@ -26,16 +24,23 @@ function getData(){
 	var chWis = $('#data-wis').val();
 	var chCha = $('#data-cha').val();
 	var chPor = $('#data-file').val();
-
-	var chart = $('#database-layout');
-	var row = $('<div>').addClass('row');
-  var col = $('<div>').addClass('col');
 	
-	var newArrayObj = {name: chName, race: chRace, class: chClass, str: chStr, dex: chDex, con: chCon, int: chInt, wis: chWis, cha: chCha, portrait: chPor};
+	localStorage.setItem('name'+count, chName);
+	localStorage.setItem('race'+count, chRace);
+	localStorage.setItem('class'+count, chClass);
+	localStorage.setItem('str'+count, chStr);
+	localStorage.setItem('dex'+count, chDex);
+	localStorage.setItem('con'+count, chCon);
+	localStorage.setItem('int'+count, chInt);
+	localStorage.setItem('wis'+count, chWis);
+	localStorage.setItem('cha'+count, chCha);
+	localStorage.setItem('portrait'+count, chPor);
 
-  chArr.push(newArrayObj);
-	$('.data').remove();  //This deletes all chart rows and regenerates them... allows for sorting abilites in the array later
-	chArr.forEach(generateTable);
+	++count;
+	localStorage.setItem('count', count)
+
+//	$('.data').remove();  //This deletes all chart rows and regenerates them... allows for sorting abilites in the array later
+//	chArr.forEach(generateTable);
 	
 	$('input').val('');
 	$('select').removeAttr('selected');
@@ -43,27 +48,27 @@ function getData(){
 }
 
 //-----------------------------------------------------------------------------//
-//This function generates a the table each time an JSON object is added, edited, or removed
+//This function generates a the table each time an JSON object is added, edited, or removed.
 
-function generateTable (chStats){
-  var chart = $('#database-layout');
-	var row = $('<div>').addClass('row data ' + chArr.indexOf(chStats));
-	
-	var col = $('<div>').addClass('col').text(chStats.name);
-	row.append(col);
-	col = $('<div>').addClass('col').text(chStats.race);
-	row.append(col);
-	col = $('<div>').addClass('col').text(chStats.class);
-	row.append(col);
-	col = $('<div>').addClass('col').html('<div class="statnumbers"><p>Str:'+chStats.str+'</p>'+'<p>Dex:'+chStats.dex+'</p>'+'<p>Con:'+chStats.con+'</p></div>'+'<div class="statnumbers"><p>Int:'+chStats.int+'</p>'+'<p>Wis:'+chStats.wis+'</p>'+'<p>Cha:'+chStats.cha+'</p></div>');
-	row.append(col);
-	col = $('<div>').addClass('col').text(chStats.portrait);
-	row.append(col);
-	col=$('<div>').addClass('col').html('<button id="edit-data' + chArr.indexOf(chStats) +'">Edit</button><button id="delete-data'+chArr.indexOf(chStats)+'">Delete</button>');
-	row.append(col);
-
-	chart.append(row);
-	event.preventDefault();
+function generateTable (){
+	for(var i=0; i<count; ++i) {
+		var chart = $('#database-layout');
+		var row = $('<div>').addClass('row data');
+		var col = $('<div>').addClass('col').text(localStorage['name'+i]);
+		row.append(col);
+		col = $('<div>').addClass('col').text(localStorage['race'+i]);
+		row.append(col);
+		col = $('<div>').addClass('col').text(localStorage['class'+i]);
+		row.append(col);
+		col = $('<div>').addClass('col').html('<div class="statnumbers"><p>Str:'+localStorage['str'+i]+'</p>'+'<p>Dex:'+localStorage['dex'+i]+'</p>'+'<p>Con:'+localStorage['con'+i]+'</p></div>'+'<div class="statnumbers"><p>Int:'+localStorage['int'+i]+'</p>'+'<p>Wis:'+localStorage['wis'+i]+'</p>'+'<p>Cha:'+localStorage['wis'+i]+'</p></div>');
+		row.append(col);
+		col = $('<div>').addClass('col').text(localStorage['portrait'+i]);
+		row.append(col);
+		col=$('<div>').addClass('col').html('<button class="edit-data">Edit</button><button id="delete-data">Delete</button>');
+		row.append(col);
+		
+		chart.append(row);
+	}
 }
 
 //-----------------------------------------------------------------------------//
