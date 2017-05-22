@@ -3,14 +3,14 @@
 // store.js - script for storing and editing JSON in local storage
 
 //-----------------------------------------------------------------------------//
-//These watch for button clicks to change the form, also generate a table from local storage as soon as page is loaded.
+//These watch for button clicks to change the form. Also generate a table from local storage as soon as page is loaded.
 
 $('#add-data').on('click', getData);
-
-generateTable();
+$('#edit-data').on('click', editData);
+$('#delete-data').on('click', deleteData);
 
 //-----------------------------------------------------------------------------//
-//This looks to see if their is already a count in local storage. If there isn't the count is set to 0. If there is, it will pick up from the last count
+//This looks to see if their is already a count in local storage. If there isn't the count is set to 0. If there is, it will pick up from the last count.
 
 var count;
 if (localStorage.count) {
@@ -47,9 +47,6 @@ function getData(){
 
 	++count;
 	localStorage.setItem('count', count);
-
-//	$('.data').remove();  //This deletes all chart rows and regenerates them... allows for sorting abilites in the array later
-//	chArr.forEach(generateTable);
 	
 	clearInputs();
 	generateTable();
@@ -74,7 +71,7 @@ function generateTable (){
 		row.append(col);
 		col = $('<div>').addClass('col').text(localStorage['portrait'+i]);
 		row.append(col);
-		col=$('<div>').addClass('col').html('<button class="edit-data">Edit</button><button id="delete-data">Delete</button>');
+		col=$('<div>').addClass('col').html('<button id="edit-data">Edit</button><button id="delete-data">Delete</button>');
 		row.append(col);
 		
 		chart.append(row);
@@ -85,7 +82,14 @@ function generateTable (){
 //This function deletes the JSON and div row
 
 function deleteData() {
-	console.log("this button is working");
+	console.log('this button is working');
+}
+
+//-----------------------------------------------------------------------------//
+//This clears the input fields
+
+function editData() {
+	console.log('This button is working');
 }
 
 //-----------------------------------------------------------------------------//
@@ -115,4 +119,6 @@ $(document).ready(function(){
 		$('#character-form').slideUp(170);
 			event.preventDefault();
 	});
+	
+	generateTable();
 });
