@@ -6,8 +6,8 @@
 //These watch for button clicks to change the form. Also generate a table from local storage as soon as page is loaded.
 
 $('#add-data').on('click', getData);
-$('.edit-data').on('click', editData);
-$('.delete-data').on('click', deleteData);
+$('#database-layout').on('click', '.edit-data', editData);
+$('#database-layout').on('click', '.delete-data', deleteData);
 
 //-----------------------------------------------------------------------------//
 //This looks to see if their is already a count in local storage. If there isn't the count is set to 0. If there is, it will pick up from the last count.
@@ -82,14 +82,14 @@ function generateTable (){
 //This function deletes the JSON and div row
 
 function deleteData() {
-	console.log("this button is working");
+	alert("this button is working");
 }
 
 //-----------------------------------------------------------------------------//
 //This clears the input fields
 
 function editData() {
-	console.log("This button is working");
+	alert("This button is working");
 }
 
 //-----------------------------------------------------------------------------//
