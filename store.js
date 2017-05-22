@@ -42,8 +42,7 @@ function getData(){
 //	$('.data').remove();  //This deletes all chart rows and regenerates them... allows for sorting abilites in the array later
 //	chArr.forEach(generateTable);
 	
-	$('input').val('');
-	$('select').removeAttr('selected');
+	clearInputs();
 	event.preventDefault();
 }
 
@@ -79,6 +78,14 @@ function deleteData() {
 }
 
 //-----------------------------------------------------------------------------//
+//This clears the input fields
+
+function clearInputs() {
+	$('input').val('');
+	$('select').val('1');
+}
+
+//-----------------------------------------------------------------------------//
 //This function creates a slide toggle with the buttons
 
 $(document).ready(function(){
@@ -89,6 +96,7 @@ $(document).ready(function(){
 	$('#cancel-data').click(function(){
 		$('#database-layout').slideDown(170);
 		$('#character-form').slideUp(170);
+		clearInputs();
 			event.preventDefault();
 	});
 	$('#add-data').click(function(){
