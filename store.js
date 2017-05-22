@@ -83,6 +83,7 @@ function generateTable (){
 
 function deleteData() {
 	console.log('this button is working');
+	event.preventDefault();
 }
 
 //-----------------------------------------------------------------------------//
@@ -90,6 +91,7 @@ function deleteData() {
 
 function editData() {
 	console.log('This button is working');
+	event.preventDefault();
 }
 
 //-----------------------------------------------------------------------------//
@@ -112,12 +114,12 @@ $(document).ready(function(){
 		$('#database-layout').slideDown(170);
 		$('#character-form').slideUp(170);
 		clearInputs();
-			event.preventDefault();
+		event.preventDefault();
 	});
 	$('#add-data').click(function(){
 		$('#database-layout').slideDown(170);
 		$('#character-form').slideUp(170);
-			event.preventDefault();
+		event.preventDefault();
 	});
 	
 	generateTable();
