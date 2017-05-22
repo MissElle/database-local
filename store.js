@@ -7,7 +7,14 @@
 
 $('#add-data').on('click', getData);
 
-var count = localStorage.count;
+var count;
+
+if (localStorage.count) {
+	count = localStorage.count;
+}else {
+	count = 0;
+}
+
 generateTable();
 
 //-----------------------------------------------------------------------------//
@@ -37,7 +44,7 @@ function getData(){
 	localStorage.setItem('portrait'+count, chPor);
 
 	++count;
-	localStorage.setItem('count', count)
+	localStorage.setItem('count', count);
 
 //	$('.data').remove();  //This deletes all chart rows and regenerates them... allows for sorting abilites in the array later
 //	chArr.forEach(generateTable);
@@ -52,7 +59,7 @@ function getData(){
 function generateTable (){
 	for(var i=0; i<count; ++i) {
 		var chart = $('#database-layout');
-		var row = $('<div>').addClass('row data');
+		var row = $('<div>').addClass('row data').attr('id', i);
 		var col = $('<div>').addClass('col').text(localStorage['name'+i]);
 		row.append(col);
 		col = $('<div>').addClass('col').text(localStorage['race'+i]);
