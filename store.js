@@ -6,8 +6,8 @@
 //These watch for button clicks to change the form. Also generate a table from local storage as soon as page is loaded.
 
 $('#add-data').on('click', getData);
-$('#edit-data').on('click', editData);
-$('#delete-data').on('click', deleteData);
+$('.edit-data').on('click', editData);
+$('.delete-data').on('click', deleteData);
 
 //-----------------------------------------------------------------------------//
 //This looks to see if their is already a count in local storage. If there isn't the count is set to 0. If there is, it will pick up from the last count.
@@ -71,7 +71,7 @@ function generateTable (){
 		row.append(col);
 		col = $('<div>').addClass('col').text(localStorage['portrait'+i]);
 		row.append(col);
-		col=$('<div>').addClass('col').html('<button id="edit-data">Edit</button><button id="delete-data">Delete</button>');
+		col=$('<div>').addClass('col').html('<button class="edit-data">Edit</button><button class="delete-data">Delete</button>');
 		row.append(col);
 		
 		chart.append(row);
