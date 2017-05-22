@@ -60,6 +60,7 @@ function generateTable (){
 	var chart = $('#database-layout');
 	$('.data').remove();
 	for(var i=0; i<count; ++i) {
+      if (localStorage['str'+i] !== undefined){
 		var row = $('<div>').addClass('row data').attr('id', i);
 		var col = $('<div>').addClass('col').text(localStorage['name'+i]);
 		row.append(col);
@@ -71,18 +72,31 @@ function generateTable (){
 		row.append(col);
 		col = $('<div>').addClass('col').text(localStorage['portrait'+i]);
 		row.append(col);
-		col=$('<div>').addClass('col').html('<button class="edit-data">Edit</button><button class="delete-data">Delete</button>');
+		col=$('<div>').addClass('col').html('<button class="edit-data" id="'+i+'">Edit</button><button class="delete-data" id="'+i+'">Delete</button>');
 		row.append(col);
 		
 		chart.append(row);
-	}
+      }
+    }
 }
 
 //-----------------------------------------------------------------------------//
 //This function deletes the JSON and div row
 
 function deleteData() {
-	alert("this button is working");
+    var i = $(this).attr('id');
+	localStorage.removeItem('name'+i);
+	localStorage.removeItem('race'+i);
+	localStorage.removeItem('class'+i);
+	localStorage.removeItem('str'+i);
+	localStorage.removeItem('dex'+i);
+	localStorage.removeItem('con'+i);
+	localStorage.removeItem('int'+i);
+	localStorage.removeItem('wis'+i);
+	localStorage.removeItem('cha'+i);
+	localStorage.removeItem('portrait'+i);
+    
+    generateTable();
 }
 
 //-----------------------------------------------------------------------------//
