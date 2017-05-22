@@ -68,7 +68,7 @@ function generateTable (){
 		row.append(col);
 		col = $('<div>').addClass('col').text(localStorage['class'+i]);
 		row.append(col);
-		col = $('<div>').addClass('col').html('<div class="statnumbers"><p>Str:'+localStorage['str'+i]+'</p>'+'<p>Dex:'+localStorage['dex'+i]+'</p>'+'<p>Con:'+localStorage['con'+i]+'</p></div>'+'<div class="statnumbers"><p>Int:'+localStorage['int'+i]+'</p>'+'<p>Wis:'+localStorage['wis'+i]+'</p>'+'<p>Cha:'+localStorage['wis'+i]+'</p></div>');
+		col = $('<div>').addClass('col').html('<div class="statnumbers"><p>Str:'+localStorage['str'+i]+'</p>'+'<p>Dex:'+localStorage['dex'+i]+'</p>'+'<p>Con:'+localStorage['con'+i]+'</p></div>'+'<div class="statnumbers"><p>Int:'+localStorage['int'+i]+'</p>'+'<p>Wis:'+localStorage['wis'+i]+'</p>'+'<p>Cha:'+localStorage['cha'+i]+'</p></div>');
 		row.append(col);
 		col = $('<div>').addClass('col').text(localStorage['portrait'+i]);
 		row.append(col);
@@ -85,6 +85,7 @@ function generateTable (){
 
 function deleteData() {
   var i = $(this).attr('id');
+  
   localStorage.removeItem('name'+i);
   localStorage.removeItem('race'+i);
   localStorage.removeItem('class'+i);
@@ -103,9 +104,19 @@ function deleteData() {
 //This clears the input fields
 
 function editData() {
-  console.log('working!');
-//  var i = $(this).attr('id');
-//  
+  var i = $(this).attr('id');
+  
+  var chName = $('#data-name').val(localStorage['name'+i]);
+  var chRace = $('#select-race option:selected').val(localStorage['race'+i]);
+  var chClass = $('#select-class option:selected').val(localStorage['class'+i]);
+  var chStr = $('#data-str').val(localStorage['str'+i]);
+  var chDex = $('#data-dex').val(localStorage['dex'+i]);
+  var chCon = $('#data-con').val(localStorage['con'+i]);
+  var chInt = $('#data-int').val(localStorage['int'+i]);
+  var chWis = $('#data-wis').val(localStorage['wis'+i]);
+  var chCha = $('#data-cha').val(localStorage['cha'+i]);
+  var chPor = $('#data-file').val(localStorage['portrait'+i]);
+  
 //  localStorage.setItem('name'+i);
 //  localStorage.setItem('race'+i);
 //  localStorage.setItem('class'+i);
@@ -116,8 +127,7 @@ function editData() {
 //  localStorage.setItem('wis'+i);
 //  localStorage.setItem('cha'+i);
 //  localStorage.setItem('portrait'+i);
-//  
-//  generateTable();
+  
 }
 
 //-----------------------------------------------------------------------------//
