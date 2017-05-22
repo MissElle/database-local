@@ -50,15 +50,17 @@ function getData(){
 //	chArr.forEach(generateTable);
 	
 	clearInputs();
+	generateTable();
 	event.preventDefault();
 }
 
 //-----------------------------------------------------------------------------//
-//This function generates a the table each time an JSON object is added, edited, or removed.
+//This function generates a the table each time a JSON object is added, edited, or removed.
 
 function generateTable (){
+	var chart = $('#database-layout');
+	$('.data').remove();
 	for(var i=0; i<count; ++i) {
-		var chart = $('#database-layout');
 		var row = $('<div>').addClass('row data').attr('id', i);
 		var col = $('<div>').addClass('col').text(localStorage['name'+i]);
 		row.append(col);
