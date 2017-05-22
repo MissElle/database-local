@@ -82,16 +82,14 @@ function generateTable (){
 //This function deletes the JSON and div row
 
 function deleteData() {
-	console.log('this button is working');
-	event.preventDefault();
+	console.log("this button is working");
 }
 
 //-----------------------------------------------------------------------------//
 //This clears the input fields
 
 function editData() {
-	console.log('This button is working');
-	event.preventDefault();
+	console.log("This button is working");
 }
 
 //-----------------------------------------------------------------------------//
