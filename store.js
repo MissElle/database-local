@@ -112,8 +112,8 @@ function editData() {
   count = $(this).attr('id');
   
   var chName = $('#data-name').val(localStorage['name'+count]);
-  var chRace = $('#select-race option:selected').val(localStorage['race'+count]);
-  var chClass = $('#select-class option:selected').val(localStorage['class'+count]);
+  var chRace = $('#select-race').val(localStorage['race'+count]);
+  var chClass = $('#select-class').val(localStorage['class'+count]);
   var chStr = $('#data-str').val(localStorage['str'+count]);
   var chDex = $('#data-dex').val(localStorage['dex'+count]);
   var chCon = $('#data-con').val(localStorage['con'+count]);
