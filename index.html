@@ -28,10 +28,10 @@
 				<form name="new-data" id="new-data">
 					<div class="sep-left">
 						<div class="form-el">
-							<p>Name:</p><input type="text" id="data-name"></div>
+							<p>Name:</p><input type="text" id="data-name" required></div>
 						<div class="form-el">
 							<p>Race:</p>
-							<select name="select-race" id="select-race">
+							<select name="select-race" id="select-race" required>
 								<option name="data-race" id="race-default" class="hide" value="1" disabled selected>Pick a Race</option>
 								<option name="data-race" id="race-drag" value="Dragon">Dragon</option>
 								<option name="data-race" id="race-dwar" value="Dwarf">Dwarf</option>
@@ -48,7 +48,7 @@
 
 						<div class="form-el">
 							<p>Class:</p>
-							<select name="select-class" id="select-class">
+							<select name="select-class" id="select-class" required>
 								<option name="data-class" id="class-default" class="hide" value="1" disabled selected>Pick a Class</option>
 								<option name="data-class" id="class-barb">Barbarian</option>
 								<option name="data-class" id="class-bard" value="Bard">Bard</option>
@@ -68,25 +68,25 @@
 
 					<div class="sep-right">
 						<div class="form-el">
-							<p>Strength:</p><input type="number" name="data-str" id="data-str" step="1" min="1">
+							<p>Strength:</p><input type="number" name="data-str" id="data-str" step="1" min="1" required>
 						</div>
 						<div class="form-el">
-							<p>Dexterity:</p><input type="number" name="data-dex" id="data-dex" step="1" min="1">
+							<p>Dexterity:</p><input type="number" name="data-dex" id="data-dex" step="1" min="1" required>
 						</div>
 						<div class="form-el">
-							<p>Constitution:</p><input type="number" name="data-con" id="data-con" step="1" min="1">
+							<p>Constitution:</p><input type="number" name="data-con" id="data-con" step="1" min="1" required>
 						</div>
 						<div class="form-el">
-							<p>Intelligence:</p><input type="number" name="data-int" id="data-int" step="1" min="1">
+							<p>Intelligence:</p><input type="number" name="data-int" id="data-int" step="1" min="1" required>
 						</div>
 						<div class="form-el">
-							<p>Wisdom:</p><input type="number" name="data-wis" id="data-wis" step="1" min="1">
+							<p>Wisdom:</p><input type="number" name="data-wis" id="data-wis" step="1" min="1" required>
 						</div>
 						<div class="form-el">
-							<p>Charisma:</p><input type="number" name="data-cha" id="data-cha" step="1" min="1">
+							<p>Charisma:</p><input type="number" name="data-cha" id="data-cha" step="1" min="1" required>
 						</div>
 				</div>
-									<div class="buttons">
+		        <div class="buttons">
 					<button id="add-data">Submit</button>
 					<button id="cancel-data">Cancel</button>
 				</div>
