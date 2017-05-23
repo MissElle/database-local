@@ -18,8 +18,18 @@ html {
 	background-image: url(parchment.jpeg); /*image courtesy of http://www.powerpointhintergrund.com/*/
 	background-size: 100%;
 	background-repeat: repeat-y;
+    background-attachment: fixed;
 	font-family: 'Almendra SC', serif;
 	font-weight: 900;
+}
+
+body {
+  min-height: 99vh;
+  background-image: url(dragon.png);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
 button, label{;font-family: 'Skranji', cursive; font-size: 1em; color: #000d31;}
