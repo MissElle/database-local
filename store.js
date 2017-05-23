@@ -3,11 +3,14 @@
 // store.js - script for storing and editing JSON in local storage
 
 //-----------------------------------------------------------------------------//
-//These watch for button clicks to change the form. Also generate a table from local storage as soon as page is loaded.
+//These watch for button clicks to change the form. Also hide the form as soon as it's loaded while showing table content.
 
 $('#add-data').on('click', getData);
 $('#database-layout').on('click', '.edit-data', editData);
 $('#database-layout').on('click', '.delete-data', deleteData);
+
+$('#database-layout').slideDown(170);
+$('#character-form').slideUp(170);
 
 //-----------------------------------------------------------------------------//
 //This looks to see if their is already a count in local storage. If there isn't the count is set to 0. If there is, it will pick up from the last count.
@@ -18,6 +21,9 @@ if (localStorage.count) {
 }else {
 	count = 0;
 }
+
+$('#database-layout').slideDown(170);
+$('#character-form').slideUp(170);
 
 //-----------------------------------------------------------------------------//
 //function gets new data and pushes to localStorage
