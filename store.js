@@ -135,7 +135,7 @@ function editData() {
 
 function clearInputs() {
 	$('input').val('');
-	$('select').val('1');
+	$('select').val('none');
 }
 
 //-----------------------------------------------------------------------------//
