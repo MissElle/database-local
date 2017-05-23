@@ -23,6 +23,10 @@ if (localStorage.count) {
 //function gets new data and pushes to localStorage
 
 function getData(){
+  if (count === 'add-cha') {
+    count = localStorage.count;
+  }
+  
 	var chName = $('#data-name').val();
 	var chRace = $('#select-race option:selected').val();
 	var chClass = $('#select-class option:selected').val();
@@ -45,6 +49,7 @@ function getData(){
 	localStorage.setItem('cha'+count, chCha);
 	localStorage.setItem('portrait'+count, chPor);
 
+    count = localStorage.count;
 	++count;
 	localStorage.setItem('count', count);
 	
@@ -104,30 +109,19 @@ function deleteData() {
 //This clears the input fields
 
 function editData() {
-  var i = $(this).attr('id');
+  count = $(this).attr('id');
   
-  var chName = $('#data-name').val(localStorage['name'+i]);
-  var chRace = $('#select-race option:selected').val(localStorage['race'+i]);
-  var chClass = $('#select-class option:selected').val(localStorage['class'+i]);
-  var chStr = $('#data-str').val(localStorage['str'+i]);
-  var chDex = $('#data-dex').val(localStorage['dex'+i]);
-  var chCon = $('#data-con').val(localStorage['con'+i]);
-  var chInt = $('#data-int').val(localStorage['int'+i]);
-  var chWis = $('#data-wis').val(localStorage['wis'+i]);
-  var chCha = $('#data-cha').val(localStorage['cha'+i]);
-  var chPor = $('#data-file').val(localStorage['portrait'+i]);
-  
-//  localStorage.setItem('name'+i);
-//  localStorage.setItem('race'+i);
-//  localStorage.setItem('class'+i);
-//  localStorage.setItem('str'+i);
-//  localStorage.setItem('dex'+i);
-//  localStorage.setItem('con'+i);
-//  localStorage.setItem('int'+i);
-//  localStorage.setItem('wis'+i);
-//  localStorage.setItem('cha'+i);
-//  localStorage.setItem('portrait'+i);
-  
+  var chName = $('#data-name').val(localStorage['name'+count]);
+  var chRace = $('#select-race option:selected').val(localStorage['race'+count]);
+  var chClass = $('#select-class option:selected').val(localStorage['class'+count]);
+  var chStr = $('#data-str').val(localStorage['str'+count]);
+  var chDex = $('#data-dex').val(localStorage['dex'+count]);
+  var chCon = $('#data-con').val(localStorage['con'+count]);
+  var chInt = $('#data-int').val(localStorage['int'+count]);
+  var chWis = $('#data-wis').val(localStorage['wis'+count]);
+  var chCha = $('#data-cha').val(localStorage['cha'+count]);
+  var chPor = $('#data-file').val(localStorage['portrait'+count]);
+ 
 }
 
 //-----------------------------------------------------------------------------//
@@ -144,18 +138,18 @@ function clearInputs() {
 $(document).ready(function(){
 	$('#add-cha').click(function(){
 	  $('#database-layout').slideUp(170);
-		$('#character-form').slideDown(170);
+      $('#character-form').slideDown(170);
+      count = $(this).attr('id');
 	});
 	$('#cancel-data').click(function(){
-		$('#database-layout').slideDown(170);
-		$('#character-form').slideUp(170);
-		clearInputs();
-		event.preventDefault();
+      $('#database-layout').slideDown(170);
+      $('#character-form').slideUp(170);
+      clearInputs();
+      count = localStorage.count;
 	});
 	$('#add-data').click(function(){
-		$('#database-layout').slideDown(170);
-		$('#character-form').slideUp(170);
-		event.preventDefault();
+      $('#database-layout').slideDown(170);
+      $('#character-form').slideUp(170);
 	});
     $('#database-layout').on('click', '.edit-data', function(){
 	  $('#database-layout').slideUp(170);
